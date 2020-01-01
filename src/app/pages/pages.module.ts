@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { RouterModule } from '@angular/router';
-import { pagesRoutes } from './pages.routes';
+import { PAGES_ROUTES } from './pages.routes';
 import { LayoutsModule } from '../layouts/layouts.module';
 
 
@@ -13,8 +12,8 @@ import { LayoutsModule } from '../layouts/layouts.module';
   imports: [
     CommonModule,
     LayoutsModule,
-    RouterModule.forChild(pagesRoutes)
+    PAGES_ROUTES
   ],
-  exports: []
+  exports: [DashboardComponent]
 })
 export class PagesModule { }
