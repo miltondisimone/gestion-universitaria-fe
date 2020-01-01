@@ -4,6 +4,8 @@ Author: Wrappixel
 Email: niravjoshi87@gmail.com
 File: scss
 */
+
+
 /**
  * Table Of Content
  *
@@ -16,15 +18,14 @@ File: scss
  *	7. Widgets
  *	8. Custom Templates
  */
- 
-@import 'variable'; 
+
+@import 'variable';
 @import 'app';
 @import 'sidebar';
-@import 'pages/pages'; 
+@import 'pages/pages';
 @import '../scss/icons/font-awesome/css/font-awesome.min.css';
 @import 'widgets/widgets';
 @import 'grid';
-@import 'responsive'; 
-@import '../css/spinners.css'; 
-@import '../css/animate.css';     
-   
+@import 'responsive';
+@import '../css/spinners.css';
+@import '../css/animate.css';
