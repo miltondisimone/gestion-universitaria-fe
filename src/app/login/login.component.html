@@ -4,20 +4,20 @@
             <!-- Tab panes -->
             <div class="card-body">
                 <h1 class="text-center">Welcome to <br><span>GU!</span></h1>
-                <form class="form-horizontal form-material login-form">
+                <form ngNativeValidate [formGroup]="loginForm" class="form-horizontal form-material login-form" (ngSubmit)="login()">
                     <div class="form-group">
                         <div class="col-md-12">
-                            <input type="email" placeholder="Email" class="form-control form-control-line" name="example-email" id="example-email">
+                            <input type="email" formControlName="email" placeholder="Email" class="form-control form-control-line" name="example-email" id="example-email" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <input type="password" placeholder="Password" value="" class="form-control form-control-line">
+                            <input type="password" formControlName="password" placeholder="Password" value="" class="form-control form-control-line" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12 text-center">
-                            <button class="btn btn-info">Log In</button>
+                            <button type="submit" class="btn btn-info" [disabled]="loginForm.invalid">Log In</button>
                         </div>
                     </div>
                 </form>

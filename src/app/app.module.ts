@@ -7,6 +7,8 @@ import { LayoutsModule } from './layouts/layouts.module';
 import { PagesModule } from './pages/pages.module';
 import { SharedModule } from './shared/shared.module';
 import { LoginModule } from './login/login.module';
+import { HttpClientModule } from '@angular/common/http';
+import { LoginService } from './services/services.index';
 
 @NgModule({
   declarations: [
@@ -18,9 +20,10 @@ import { LoginModule } from './login/login.module';
     LayoutsModule,
     PagesModule,
     SharedModule,
-    LoginModule
+    LoginModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,35 +3,50 @@
         <div class="card">
             <!-- Tab panes -->
             <div class="card-body">
-                <form class="form-horizontal form-material login-form">
+                <form ngNativeValidate [formGroup]="registerForm" (ngSubmit)="registerUser()" class="form-horizontal form-material login-form">
                     <h1 class="text-center">Sign In</h1>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <input type="text" placeholder="Name" class="form-control form-control-line" name="name">
+                            <input type="text" formControlName="name" placeholder="Name" class="form-control form-control-line" name="name" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <input type="email" placeholder="Email" class="form-control form-control-line" name="email">
+                            <input type="email" formControlName="email" placeholder="Email" class="form-control form-control-line" name="email" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <input type="password" placeholder="Password" class="form-control form-control-line">
+                            <input formControlName="password" name="password" type="password" placeholder="Password" class="form-control form-control-line" required>
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input formControlName="password2" name="password2" type="password" placeholder="Repeat password" class="form-control form-control-line" required>
+                        </div>
+                    </div>
+                    <div class="form-group" *ngIf="registerForm.errors?.areNotEquals">
+                        <p class="text-danger col-12">
+                            Passwords must match.
+                        </p>
                     </div>
                     <div class="form-group">
                         <label class="col-12">Select Role</label>
                         <div class="col-12">
-                            <select class="form-control form-control-line">
-                              <option>Student</option>
-                              <option>Teacher</option>
+                            <select formControlName="role" class="form-control form-control-line">
+                              <option value="STUDENT_ROLE" selected="selected">Student</option>
+                              <option value="TEACHER_ROLE">Teacher</option>
                           </select>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-12 text-center">
-                            <button class="btn btn-primary">Sign in</button>
+                            <button type="submit" class="btn btn-primary">Sign Up</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12 text-center">
+                            <p>Already have an account? <a routerLink="/login" class="text-info m-l-5"><b>Sign In</b></a></p>
                         </div>
                     </div>
                 </form>
