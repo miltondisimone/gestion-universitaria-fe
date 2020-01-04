@@ -4,7 +4,7 @@ import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user.model';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/services.index';
-import swal from 'sweetalert';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit {
     );
 
     this.userService.registerUser(user).subscribe( () => {
-      swal('Registration complete!', 'You can log in now!', 'success');
+      swal.fire('Registration complete!', 'You can log in now!', 'success');
       this.router.navigate(['/login']);
     });
 
