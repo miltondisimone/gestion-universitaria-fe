@@ -15,7 +15,7 @@ export class UserService {
 
   registerUser(user: User) {
 
-    const url = URL_SERVICES + '/user';
+    const url = `${URL_SERVICES}/${user.userType}`;
 
     return this.http.post(url, user).pipe(
       map( (resp: any) => {

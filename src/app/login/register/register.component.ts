@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit {
       this.registerForm.value.name,
       this.registerForm.value.email,
       this.registerForm.value.password,
-      this.registerForm.value.role
+      this.registerForm.value.userType
     );
 
     this.userService.registerUser(user).subscribe( () => {
@@ -58,8 +58,9 @@ export class RegisterComponent implements OnInit {
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, Validators.required),
       password2: new FormControl(null, Validators.required),
-      role: new FormControl('STUDENT_ROLE', Validators.required),
+      userType: new FormControl('student', Validators.required),
     }, { validators: this.areEquals( 'password', 'password2') });
+
 
   }
 
