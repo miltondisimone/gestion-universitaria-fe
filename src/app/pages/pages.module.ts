@@ -4,11 +4,12 @@ import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PAGES_ROUTES } from './pages.routes';
 import { LayoutsModule } from '../layouts/layouts.module';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
 @NgModule({
-  declarations: [PagesComponent, DashboardComponent],
+  declarations: [PagesComponent, DashboardComponent, ProfileComponent],
   imports: [
     CommonModule,
     LayoutsModule,
