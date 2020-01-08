@@ -24,4 +24,11 @@ export class UserService {
     );
 
   }
+
+  getUserImage(userImg: string) {
+
+    const url = `${URL_SERVICES}/image/user/${userImg}`;
+
+    return this.http.get(url);
+  }
 }
