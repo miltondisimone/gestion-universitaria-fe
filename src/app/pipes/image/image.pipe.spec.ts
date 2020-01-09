@@ -1,4 +1,4 @@
-import { ImagePipe } from './image/image.pipe';
+import { ImagePipe } from './image.pipe';
 
 describe('ImagePipe', () => {
   it('create an instance', () => {

@@ -31,4 +31,22 @@ export class UserService {
 
     return this.http.get(url);
   }
+
+  uploadUserImage(file: File) {
+
+    const userId = localStorage.getItem('id');
+    const url = `${URL_SERVICES}/user/upload/${userId}`;
+
+    const formData: FormData = new FormData();
+    formData.append('image', file);
+
+    return this.http.put(url, formData).pipe(map( (resp: any) => {
+      return resp.updatedUser;
+    }));
+
+  }
+
+
 }
+
+

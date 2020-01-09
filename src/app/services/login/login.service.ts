@@ -4,6 +4,7 @@ import { User } from '../../models/user.model';
 import { URL_SERVICES } from 'src/app/config/config';
 import {map} from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 
 @Injectable({
@@ -11,11 +12,25 @@ import { Router } from '@angular/router';
 })
 export class LoginService {
 
+  private userStateSource: BehaviorSubject<User> = new BehaviorSubject(null);
+  userState: Observable<User> = this.userStateSource.asObservable();
+
   user: User;
   token: string;
 
   constructor(private http: HttpClient, private router: Router) {
     this.loadStorage();
+    this.userState.subscribe(userState => {
+      this.user = userState;
+    });
+  }
+
+  updateUserState(user: User) {
+    this.userStateSource.next(user);
+  }
+
+  getUserState(): Observable<User> {
+    return this.userState;
   }
 
   isAuthenticated() {
@@ -26,6 +41,7 @@ export class LoginService {
     if (localStorage.getItem('token')) {
       this.token = localStorage.getItem('token');
       this.user = JSON.parse(localStorage.getItem('user'));
+      this.userStateSource.next(this.user);
     } else {
       this.token = '';
       this.user = null;
@@ -36,8 +52,6 @@ export class LoginService {
     localStorage.setItem('id', id);
     localStorage.setItem('token', token);
     localStorage.setItem('user', JSON.stringify(user));
-
-    this.user = user;
     this.token = token;
   }
 
@@ -48,6 +62,7 @@ export class LoginService {
     return this.http.post(url, user).pipe(
       map( (resp: any) => {
         this.saveStorage(resp.id, resp.token, resp.user);
+        this.userStateSource.next(resp.user);
         return true;
       })
     );
